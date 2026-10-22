@@ -31,7 +31,7 @@ public:
             if (!playerCantReceive) {
                 for (unsigned int i = 0; i < 336; ++i) {
                     if (CPickups::aPickUps[i].bPickupType == PICKUP_ASSET_REVENUE) {
-                        static unsigned int revenue = CPickups::aPickUps[i].dwPickupQuantity;
+                        unsigned int revenue = CPickups::aPickUps[i].dwPickupQuantity;
                         if (revenue >= 1500 && revenue <= 10000) {
                             totalMoney += revenue;
                             CPickups::aPickUps[i].fStandProximity = 0.0f;
@@ -46,7 +46,7 @@ public:
                     CWorld::Players[0].m_nMoney += totalMoney;
                     static char text[256];
                     sprintf(text, "You have earned $%d from %d assets.", totalMoney, numAssets);
-                    CHud::SetHelpMessage(text, true, false);
+                    CHud::SetHelpMessage(text, false, false);
                 }
             }
             lastStoredHour = CClock::ms_nGameClockHours;
